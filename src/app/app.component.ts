@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {BsLocaleService} from 'ngx-bootstrap/datepicker';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'diplom-nastya-gutorova';
+
+  constructor(
+    private localeService: BsLocaleService
+  ) {
+    this.localeService.use('ru');
+  }
+
 }

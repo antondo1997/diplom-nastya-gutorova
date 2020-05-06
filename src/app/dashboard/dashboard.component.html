@@ -1,0 +1,25 @@
+<nav class="navbar navbar-dark bg-info flex-md-nowrap">
+  <a routerLink="/dashboard" class="navbar-brand mb-0">Система для согласования с документами клиента</a>
+  <ul class="navbar-nav" style="">
+    <li class="nav-item" routerLinkActive="active">
+      <!--      <a [routerLink]="['/dashboard', 'shopping-cart']" class="nav-link active">-->
+      <!--        <i class="fas fa-shopping-cart"></i>-->
+      <!--        <span class="badge badge-danger align-top" *ngIf="cartService.cartBadge$ | async as badge">-->
+      <!--          {{badge}}-->
+      <!--        </span>-->
+      <!--      </a>-->
+    </li>
+    <li class="nav-item ml-4">
+      <a href="#" (click)="logout($event)" class="nav-link active">
+        <span class="row align-items-center">
+        Выход
+        <i class="fas fa-sign-out-alt mx-2" style="font-size: 30px;"></i>
+        </span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<div class="container-fluid">
+  <app-post-list></app-post-list>
+</div>

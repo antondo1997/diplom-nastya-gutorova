@@ -1,0 +1,13 @@
+.modal-dialog {
+  margin-top: 200px;
+}
+
+//.modal-xxx {
+//  max-width: 1200px;
+//}
+
+.btn {
+  &:disabled {
+    cursor: not-allowed;
+  }
+}

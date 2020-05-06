@@ -1,0 +1,60 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">{{title}}</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="form">
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label for="link">Ссылка на гугл документ:</label>
+          <input type="text" id="link" class="form-control" formControlName="link"
+                 [ngClass]="{'is-invalid': form.get('link').touched && form.get('link').invalid}">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="state">Состояние:</label>
+          <!--          <input type="email" id="state" class="form-control" formControlName="state"-->
+          <!--                 [ngClass]="{'is-invalid': form.get('state').touched && form.get('state').invalid}">-->
+          <select id="state" class="form-control" formControlName="state"
+                  [ngClass]="{'is-invalid': form.get('state').touched && form.get('state').invalid}"
+          >
+            <option value="" disabled>Выбрать состояние</option>
+            <option *ngFor="let state of states" [value]="state.en">{{state.ru}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="deadline">Дедлайн:</label>
+          <input type="text" id="deadline" class="form-control" formControlName="deadline" bsDatepicker
+                 [ngClass]="{'is-invalid': form.get('deadline').touched && form.get('deadline').invalid}">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label for="comment">Примечание/комментарий:</label>
+          <textarea type="text" id="comment" class="form-control" formControlName="comment" rows="2"
+                    [ngClass]="{'is-invalid': form.get('comment').touched && form.get('comment').invalid}">
+          </textarea>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer justify-content-center">
+  <button
+    type="button" class="btn btn-success" (click)="onSave()"
+    [disabled]="form.invalid || submitted"
+  >{{ mode === 'create' ? 'Добавить' : 'Сохранить'}} запись
+  </button>
+</div>

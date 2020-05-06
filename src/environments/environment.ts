@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiKey: 'AIzaSyBeLIT8zj_JP9Xz0e9tb5LVLv3JtEFnAZo',
+  databaseURL: 'https://diplom-nastya-gutorova.firebaseio.com',
 };
 
 /*

@@ -1,0 +1,52 @@
+<div class="my-5">
+
+  <div class="row justify-content-center" *ngIf="isLoading">
+    <div class="spinner-border text-success " role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+
+  <div class="" *ngIf="!isLoading">
+    <div class="my-2">
+      <button type="button" class="btn btn-success" (click)="addPost()">Добавить новую запись</button>
+    </div>
+
+    <div class="border rounded shadow p-3">
+      <table class="table table-hover table-bordered">
+        <thead>
+        <tr class="d-flex text-center">
+          <th class="col-1">№</th>
+          <th class="col-4">Ссылка на гугл док</th>
+          <th class="col-2">Состояние</th>
+          <th class="col-1">Дедлайн</th>
+          <th class="col">Примечание</th>
+          <th class="col-1"></th>
+          <th class="col-1"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr
+          class="d-flex text-center" *ngFor="let post of postList; let i = index"
+          [ngClass]="{'': post.state === 'agreed','bg-warning': post.state === 'inAgreement','text-muted text-through': post.state === 'rejected'}"
+        >
+          <th class="col-1">{{ i + 1 }}</th>
+          <td class="col-4 text-left">
+            <a [href]="post.link" target="_blank">{{ post.link | truncate }}</a>
+          </td>
+          <td class="col-2">{{ post.state | state }}</td>
+          <td class="col-1">{{ post.deadline | date: 'dd.MM.yyyy' }}</td>
+          <td class="col text-left">{{ post.comment }}</td>
+          <td class="col-1">
+            <a (click)="editPost(post.id, i)"><i class="fas fa-pen text-dark"></i></a>
+          </td>
+          <td class="col-1">
+            <a (click)="deletePost(post.id, i)"><i class="fas fa-times-circle text-dark"></i></a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
