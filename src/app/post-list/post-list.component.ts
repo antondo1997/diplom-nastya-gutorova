@@ -29,7 +29,7 @@ export class PostListComponent implements OnInit, OnDestroy {
     this.postsSub = this.postService.getAll()
       .subscribe((posts) => {
         console.log(posts);
-        this.postList = posts;
+        this.postList = posts.reverse();
         this.isLoading = false;
       }, error => {
         console.log(error);
@@ -46,7 +46,7 @@ export class PostListComponent implements OnInit, OnDestroy {
       if (idx !== -1) {
         this.postList[idx] = resPost;
       } else {
-        this.postList.push(resPost);
+        this.postList.unshift(resPost);
       }
     });
   }
